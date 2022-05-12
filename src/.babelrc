@@ -1,0 +1,4 @@
+//Class properties are a new part of JavaScript so we need Parcel transform the code when Parcel transpiles our code.
+{
+    "plugins": ["@babel/plugin-proposal-class-properties"]
+  }
