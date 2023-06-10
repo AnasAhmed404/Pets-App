@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
+import ThemeContext from "./ThemeContext";
+import { PetAPIResponse, Animal, Pet } from "./APIResponsesTypes";
 
-const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
+const ANIMALS: Animal[] = ["bird", "cat", "dog", "rabbit", "reptile"];
 
-const SearchParams = () => {
   //order here is essential? why? because animal depends on location and breed depend on animal
-  const [location, updateLocation] = useState("");
-  const [animal, updateAnimal] = useState("");
-  const [breed, updateBreed] = useState("");
-  const breeds = useBreedList(animal);
-
-  const [pets, setPets] = useState([]);
+  const SearchParams: FunctionComponent = () => {
+    const [location, setLocation] = useState("");
+    const [animal, setAnimal] = useState("" as Animal);
+    const [breed, setBreed] = useState("");
+    const [breeds] = useBreedList(animal);
+    const [theme, setTheme] = useContext(ThemeContext);
+    const [pets, setPets] = useState([] as Pet[]);
 
   useEffect(() => {
     requestPets();

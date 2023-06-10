@@ -6,6 +6,8 @@ import Details from "./Details";
 
 const App = () => {
   return (
+    <div>
+      <ThemeContext.Provider value={theme}>
     <StrictMode>
       <BrowserRouter>
         {/*anytime you use link tag it should be inside your browser router */}
@@ -24,6 +26,8 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </StrictMode>
+    </ThemeContext.Provider>
+    </div>
   );
 };
 
